@@ -1,17 +1,39 @@
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
+import java.util.Scanner;
 public class Main {
+    public static int[] userInput(int n, Scanner s){
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = s.nextInt();
+        }
+        return arr;
+    }
+
+    public static void sortArr(int[] arr){
+        for(int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] > arr[j]) {
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+    }
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.print("Hello and welcome!");
-
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
-
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+        System.out.print("Enter n: ");
+        Scanner s = new Scanner(System.in);
+        int n = s.nextInt();
+        if(n > 0) {
+            int[] arr = userInput(n,s);
+            System.out.println("Ans: ");
+            sortArr(arr);
+            for(int x : arr){
+                System.out.println(x);
+            }
+        }else{
+            System.out.println("n must be greater than 0");
         }
     }
 }
